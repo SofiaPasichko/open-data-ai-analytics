@@ -57,11 +57,11 @@ data.gov.ua: https://data.gov.ua/dataset/63cd8827-e6f1-4e0f-8fa1-96f1a5872d9e
 В останній гілці feature/visualization додано графіки (Lineplot та Boxplot).
 
 Проект зафіксовано у стані v0.1.0. Додано CHANGELOG.md для відстеження історії змін.
-
-''' * 93fb1e7 (HEAD -> main, tag: v0.1.0, origin/main) Added CHANGELOG for v0.1.0
+```
+* 93fb1e7 (HEAD -> main, tag: v0.1.0, origin/main) Added CHANGELOG for v0.1.0
 * 05972f6 (feature/visualization) Added figures
 * e58a389 Added visualization module
-*   602c537 Fixed merge conflict
+* 602c537 Fixed merge conflict
 |\
 | * e6d8f72 (feature/data_research) Added additional info to README
 * | 18382bf Added date info to README
@@ -72,7 +72,8 @@ data.gov.ua: https://data.gov.ua/dataset/63cd8827-e6f1-4e0f-8fa1-96f1a5872d9e
 |/
 * 59e0c92 (feature/data_load) Added data loading script
 * 2c414a4 Update README
-* 5982f99 Initial commit '''
+* 5982f99 Initial commit
+```
 
 Гіпотеза №1 (Київ та SO2): Підтверджено. Дані продемонстрували найвищий середній рівень забруднення в столиці.
 
