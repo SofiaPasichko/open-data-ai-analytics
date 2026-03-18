@@ -1,10 +1,13 @@
 import pandas as pd
 
-def run_data_quality_checks(file_path):
+
+def run_data_quality_checks():
+    file_path = "https://data.gov.ua/dataset/1c1d0513-a2f1-46c9-8130-b6ee5ebcc9c9/resource/aa48911d-b696-450b-ac94-8d08fb13d0f9/download/shchodenni-za-sichen-2026.csv"
+
     df = pd.read_csv(file_path, sep=';', decimal=',', na_values='null')
-    
+
     print(f"Звіт про якість даних: {file_path} ---")
-    
+
     num_rows, num_cols = df.shape
     print(f"\n1. Розмірність даних:")
     print(f"- Кількість записів (рядків): {num_rows}")
@@ -27,6 +30,6 @@ def run_data_quality_checks(file_path):
 
     return df
 
+
 if __name__ == "__main__":
-    file_name = 'shchodenni-za-sichen-2026.csv'
-    df_clean = run_data_quality_checks(file_name)
+    df_clean = run_data_quality_checks()
