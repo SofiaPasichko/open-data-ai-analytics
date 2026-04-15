@@ -1,0 +1,62 @@
+Звіт про якість даних ---
+
+1. Розмірність даних:
+- Рядків: 246
+- Стовпців: 26
+
+2. Пропущені значення:
+1      25
+2      26
+3      33
+4     242
+5      15
+6      15
+7      15
+8      15
+9      15
+10     23
+11    242
+12     10
+13     12
+14      9
+15      5
+16      2
+17      9
+18    242
+20      2
+21      2
+22      5
+30      1
+dtype: int64
+Загальна кількість пропусків: 965
+
+3. Типи даних:
+city                    str
+coordinateNumber      int64
+nameImpurity            str
+1                   float64
+2                   float64
+3                   float64
+4                   float64
+5                   float64
+6                   float64
+7                   float64
+8                   float64
+9                   float64
+10                  float64
+11                  float64
+12                  float64
+13                  float64
+14                  float64
+15                  float64
+16                  float64
+17                  float64
+18                  float64
+19                  float64
+20                  float64
+21                  float64
+22                  float64
+30                  float64
+dtype: object
+
+4. Кількість дублікатів: 0

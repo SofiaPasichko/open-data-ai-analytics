@@ -1,12 +1,25 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-
-URL = "https://data.gov.ua/dataset/1c1d0513-a2f1-46c9-8130-b6ee5ebcc9c9/resource/aa48911d-b696-450b-ac94-8d08fb13d0f9/download/shchodenni-za-sichen-2026.csv"
+import os
+from sqlalchemy import create_engine
 
 
 def load_and_prepare_data():
-    df = pd.read_csv(URL, sep=';', decimal=',', na_values='null')
+    db_user = os.getenv('POSTGRES_USER', 'user')
+    db_password = os.getenv('POSTGRES_PASSWORD', 'password')
+    db_db = os.getenv('POSTGRES_DB', 'mydb')
+    db_host = os.getenv('POSTGRES_HOST', 'db')
+    db_port = os.getenv('POSTGRES_PORT', '5432')
+
+    connection_string = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_db}"
+    engine = create_engine(connection_string)
+
+    try:
+        df = pd.read_sql("air_data", engine)
+    except Exception as e:
+        print(f"Помилка при читанні з БД: {e}")
+        return pd.DataFrame()
 
     day_cols = [col for col in df.columns if col.isdigit()]
     meta_cols = ['city', 'coordinateNumber', 'nameImpurity']
@@ -26,6 +39,10 @@ def load_and_prepare_data():
 
 
 def visualize_pollution_data(df_long):
+    if df_long.empty:
+        print("Немає даних для візуалізації")
+        return
+
     sns.set_theme(style="whitegrid")
     plt.figure(figsize=(12, 6))
 
@@ -54,9 +71,10 @@ def visualize_pollution_data(df_long):
 
     plt.tight_layout()
 
-    import os
-    os.makedirs("artifacts/visualization", exist_ok=True)
-    plt.savefig("artifacts/visualization/plot.png")
+    output_path = "static/plot.png"
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    plt.savefig(output_path)
+    print(f"Графік успішно збережено за шляхом: {output_path}")
 
     plt.close()
 

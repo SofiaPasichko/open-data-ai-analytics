@@ -6,13 +6,13 @@ on:
       module:
         description: "Choose module to run on self-hosted runner"
         required: true
-        default: "visualization"
+        default: "data_visualization"
         type: choice
         options:
           - data_load
           - data_quality
           - data_research
-          - visualization
+          - data_visualization
 
 jobs:
   run-selfhosted:
