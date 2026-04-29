@@ -2,8 +2,10 @@ from flask import Flask, render_template, send_from_directory
 from sqlalchemy import create_engine
 import pandas as pd
 import os
+from prometheus_flask_exporter import PrometheusMetrics
 
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
 
 db_user = os.getenv('POSTGRES_USER', 'user')
 db_password = os.getenv('POSTGRES_PASSWORD', 'password')
