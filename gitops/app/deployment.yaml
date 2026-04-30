@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: open-data-web
+  namespace: open-data-app
+  labels:
+    app: open-data-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: open-data-web
+  template:
+    metadata:
+      labels:
+        app: open-data-web
+    spec:
+      containers:
+        - name: open-data-container
+          image: sofiapasichko/open-data-app:v1
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+          env:
+            - name: APP_VERSION
+              value: "gitops-v1"
