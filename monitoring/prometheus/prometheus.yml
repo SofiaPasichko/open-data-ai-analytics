@@ -16,4 +16,4 @@ scrape_configs:
 
   - job_name: 'web-app'
     static_configs:
-      - targets: ['app-web-1:5000']
+      - targets: ['open-data-service.gitops-lab:80']
